@@ -5,6 +5,8 @@ body {
 h1#politigo {
   text-align: center;
   font-family: 'Frijole', cursive;
+  font-size: 7em;
+  padding-top: 10px;
 }
 span.detail {
   font-family: 'Codystar', cursive;
@@ -24,6 +26,17 @@ button.detail {
 animation-duration: 3s;
 /* animation-delay: 2s; */
 /* animation-iteration-count: infinite; */
+}
+
+#subtitle {
+  text-align: center;
+  font-family: 'Major Mono Display', monospace;
+  font-size: 16px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+#subtitle:hover {
 }
 
 #map {

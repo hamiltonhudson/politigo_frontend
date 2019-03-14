@@ -16,56 +16,62 @@ document.addEventListener('DOMContentLoaded', function() {
   // let eventShown;
   // const causeFilter = document.querySelector('#filter-by-cause')
   // const styleFilter = document.querySelector('#filter-by-style')
+  // let userInfo
 
-userForm.addEventListener('submit', (event) => {
-  event.preventDefault()
-  let name = userInput.value
-  let li = document.createElement('li')
-  li.innerHTML = `${name} | humanitarian goodwill score: 0`
-  li.dataset.id = name.id
-
-  fetch('http://localhost:3000/api/v1/users/', {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      name: `${name}`
+function getUser() {
+  userForm.addEventListener('submit', (event) => {
+    event.preventDefault()
+    let name = userInput.value
+    let li = document.createElement('li')
+    // li.innerHTML = `${name} | humanitarian goodwill score: 0`
+    fetch('http://localhost:3000/api/v1/users/', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: `${name}`
+      })
+    })
+    .then(r => r.json())
+    .then(response => {
+      // console.log(response)
+      let user = response
+      li.innerHTML = `${user.name} | humanitarian goodwill score: 0`
+      li.dataset.id = user.id
+      // console.log("user in getUser", user)
+      // console.log("li in GetUser", li, li.dataset.id)
+      usersList.appendChild(li)
+      fetchEvents()
+      showCurrentUserEvents(user)
+      showEventDetails(user)
+      showAllUsers()
     })
   })
-  .then(response => response.json())
-  .then(data => {
-    // console.log(data)
-    // li.dataset.id = data.id
-    // usersList.appendChild(li)
-    usersList.appendChild(li)
-  // userDisplay.innerHTML = `
-  //                         <h3>${data.name}</h3>
-  //                         `
-  // userDisplay.dataset.id = data.id
-  // userDisplay.dataset.name = data.name
-  // userDisplay.dataset.score = data.score
-  // console.log(data.id)
-  })
-})
+}
 
-function showCurrentUserEvents() {
-  fetch('http://localhost:3000/api/v1/users/')
+function showCurrentUserEvents(userInfo) {
+  fetch(`http://localhost:3000/api/v1/users/`)
   .then(response => response.json())
   .then(data => {
+    // console.log("data in showCurrentUserEvents", data)
     let users = data
-    let signedIn = users[0]
+    // console.log("userInfo in showCurrentUserEvents", userInfo)
+    let signedIn = users.find(user => user.id === userInfo.id)
+    // console.log("signedIn.user_events", signedIn.user_events)
+    // console.log("signedIn in showCurrentUserEvents", signedIn)
     currentUser.textContent = `Activist: ${signedIn.name}`
     currentUserScore.textContent = `humanitarian goodwill score: ${signedIn.score}`
     let usersEvents = signedIn.events
+    // console.log("usersEvents in showCurrentUserEvents", usersEvents)
+    currentUserEvents.innerHTML = ''
     usersEvents.forEach(userEvent => {
       let li = document.createElement('li')
       li.textContent = `${userEvent.cause} | ${userEvent.style}`
       li.dataset.id = userEvent.id
       currentUserEvents.appendChild(li)
-      })
-    // })
+    })
     currentUserEvents.addEventListener('click', (event) => {
       userEventClicked = parseInt(event.target.dataset.id)
       userEventShown = usersEvents.find((userEvent) => userEvent.id === userEventClicked)
@@ -76,52 +82,48 @@ function showCurrentUserEvents() {
         <span class="detail" id=data-name="time">${userEventShown.time}</span><br></br>
         <button class="detail" type="button" id="remove" data-id="{userEventShown.id}">Remove This Event</button>
         `
-
       const removeEventBtn = document.querySelector("#remove")
       removeEventBtn.addEventListener('click', (event) => {
-        fetch(`http://localhost:3000/api/v1/events/${userEventShown.id}/remove`, {
-          method: 'PATCH',
+        removeEventClicked = signedIn.user_events.find(ue => ue.event_id === eventShown.id)
+        // console.log("signedIn.user_events in showCurrentUserEvents", signedIn.user_events)
+        // console.log("removeEventClicked in showCurrentUserEvents", removeEventClicked)
+        fetch(`http://localhost:3000/api/v1/user_events/${removeEventClicked.id}`, {
+          method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
           },
           body: JSON.stringify({
+            id: `${removeEventClicked.id}`
           })
         })
         .then(response => response.json())
         .then(data => {
-          updatedUser = data.user
-          removedEvent = data.event
+          // console.log("data response from user_events/delete", data.score)
+          updatedUser = data
           currentUserScore.textContent = `humanitarian goodwill score: ${updatedUser.score}`
           currentUserEvents.innerHTML = ''
-          showCurrentUserEvents()
+          showCurrentUserEvents(updatedUser)
           window.alert('You are no longer signed up')
           currentUserEventsDetail.innerHTML = '← Click Event for Details'
           usersList.innerHTML = ''
-          fetch('http://localhost:3000/api/v1/users/')
-          .then(response => response.json())
-          .then(data => {
-            let users = data
-            users.forEach(user => {
-              usersList.innerHTML += `
-                                    <li data-id='${user.id}'>${user.name} | humanitarian goodwill score: ${user.score}</li>
-                                    `
-            })
-          })
+          showActivistBtn.textContent = 'Show'
+          // showAllUsers()
         })
       })
     })
   })
 }
 
-// -----------
 function showAllUsers() {
   showActivistBtn.addEventListener('click', (event) => {
-    if (showActivistBtn.textContent === 'Show All') {
-      showActivistBtn.textContent = 'Hide All'
+    // usersList.innerHTML = ''
+    if (showActivistBtn.textContent === 'Show') {
+      showActivistBtn.textContent = 'Hide'
       fetch('http://localhost:3000/api/v1/users/')
       .then(response => response.json())
       .then(data => {
+        // console.log("data in showallUsers", data)
         let users = data
         users.forEach(user => {
           usersList.innerHTML += `
@@ -130,14 +132,14 @@ function showAllUsers() {
         })
       })
     } else {
-      showActivistBtn.textContent = 'Show All'
+      showActivistBtn.textContent = 'Show'
       usersList.innerHTML = ''
     }
   })
 }
 // --------
 
-// function fetchEvents() {
+function fetchEvents() {
   fetch('http://localhost:3000/api/v1/events/')
     .then(response => response.json())
     .then(data => {
@@ -150,10 +152,9 @@ function showAllUsers() {
       })
       // showEventDetails()
     })
-// } <--function fetchEvents() closing tag
-// -----------
+  }
 
-// function showEventDetails() {
+function showEventDetails(userInfo) {
   eventsList.addEventListener('click', (event) => {
     eventClicked = parseInt(event.target.dataset.id)
     eventShown = events.find((event) => event.id === eventClicked)
@@ -180,50 +181,48 @@ function showAllUsers() {
        title: title
      });
      marker = ''
-    let newAttendee = {id: parseInt(userDisplay.dataset.id), name: userDisplay.dataset.name, score: parseInt(userDisplay.dataset.score)}
+    // console.log("userInfo in showEventDetails", userInfo)
+    let newAttendee = userInfo
+    // console.log("newAttendee in showEventDetails", newAttendee)
     const addEventBtn = document.querySelector("#add")
     addEventBtn.addEventListener('click', (event) => {
-      fetch(`http://localhost:3000/api/v1/events/${eventShown.id}/add`, {
-        method: 'PATCH',
+      fetch(`http://localhost:3000/api/v1/user_events/`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
         body: JSON.stringify({
+          user_id: newAttendee.id,
+          event_id: eventShown.id
         })
       })
       .then(response => response.json())
       .then(data => {
+        userEvent = data
+        // console.log("data in showEventDetails", data)
+        // console.log("userEvent in showEventDetails", userEvent)
+        // console.log("data.event in showEventDetails", data.event)
         if (data.errors){
           alert('You are already signed up for this event')
           eventShowPanel.innerHTML = '← Click Event for Details'
         } else {
-          addedEvent = data.event
-          updatedUser = data.user
-          currentUserScore.textContent = `humanitarian goodwill score: ${updatedUser.score}`
-          currentUserEvents.innerHTML = ''
-          showCurrentUserEvents()
+          // console.log("userEvent in showEventDetails", userEvent)
+          let addedEvent = userEvent.event
+          // console.log("addedEvent in showEventDetails", addedEvent)
+          let updatedUser = userEvent.user
+          // console.log("updatedUser in showEventDetails", updatedUser)
+          showCurrentUserEvents(updatedUser)
           window.alert('You are signed up!')
           eventShowPanel.innerHTML = '← Click Event for Details'
           usersList.innerHTML = ''
-          fetch('http://localhost:3000/api/v1/users/')
-          .then(response => response.json())
-          .then(data => {
-            let users = data
-            users.forEach(user => {
-              usersList.innerHTML += `
-                                    <li data-id='${user.id}'>${user.name} | humanitarian goodwill score: ${user.score}</li>
-                                    `
-            })
-          })
+          showActivistBtn.textContent = 'Show'
         }
       })
     })
   })
+}
 
-// }<---showEventDetails() closing tag
-// -----------
-
-showCurrentUserEvents()
-showAllUsers()
+getUser()
+// showAllUsers()
 })

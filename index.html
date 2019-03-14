@@ -11,8 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=Codystar" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Frijole" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative" rel="stylesheet">
-    <!-- Cinzel+Decorative|Codystar|Fredericka+the+Great|Frijole|Major+Mono+Display| -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative" rel="stylesheet"> -->
+      <link href="https://fonts.googleapis.com/css?family=Cinzel|Cinzel+Decorativ|Cinzel+Decorative|Codystar|Fredericka+the+Great|Frijole|Major+Mono+Display" rel="stylesheet">
     <link href="css/styling.css" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -24,21 +24,31 @@
   </head>
 
   <body>
+    <br/>
     <h1 id="politigo" class="pulse">Politigo</h1>
+    <br/>
+    <div class="container">
+      <div class="divider"></div><br/>
+      <div id="subtitle"/>
+      <!-- <span>Be involved. Get active. Effect change.</span><br/> -->
+      <span class="text waves-effect waves-teal">Be active. Get involved. Effect change.<span/>
+      <!-- <span>Get involved. Be active. Effect change.</span><br/> -->
+      <p style="margin-top: 10px;">✊✊🏻✊🏼✊🏽✊🏾✊🏿</p>
+    </div><br/>
+    </div>
 
     <div class="container">
-
-    <div class="divider"></div>
-    <h6>Sign Up</h6>
+    <div class="divider"></div><br/>
+    <h6  style="margin-top: 30px;">Sign Up</h6>
     <div class="section" id="enter-user">
       <div class="row">
         <form class="col s12" id="user-form">
           <div class="row">
             <div class="input-field col s6">
-              <input style="font-size:15px;" id="user-input" type="text" placeholder="first and last" class="validate"/>
               <label style="font-size: 16px; width: 12%; height: 30px; top:-3px;
               font-family:'Oswald', sans-serif" for="first_name">Name</label>
-              <input style="font-size: 12px;" type="submit" value="Submit"/>
+              <input style="font-size:15px; padding-bottom:5px;" id="user-input" type="text" placeholder="first and last" class="validate"/>
+              <input style="font-size: 12px; margin-top:15px;" type="submit" value="Submit"/>
             </div>
           </div>
         </form>
@@ -53,13 +63,13 @@
     <div class="section"><div>
       <span id="current-user">
       <h3 id="activist" href="#!" class="text waves-effect waves-teal" style="font-family: 'Fredericka the Great', cursive;">Activist: </h3>
-      <h6 style="font-family:'Cinzel Decorative', cursive;" id="current-user-score">Humanitarian Goodwill Score:</h6>
+      <h6 style="font-family:'Cinzel Decorative', cursive; margin-bottom: 20px;" id="current-user-score">Humanitarian Goodwill Score:</h6>
       </span>
 
       <div class="divider"></div>
       <div class="row">
          <!-- <a href="#!" class="btn waves-effect waves-teal">Send</a> -->
-        <h3 href="#!" class="text waves-effect waves-teal" style="font-family: 'Fredericka the Great', cursive;">Your Events</h3>
+        <h3 href="#!" class="text waves-effect waves-teal" style="font-family: 'Fredericka the Great', cursive; margin-top:40px;">Your Events</h3>
         <div class="section" id="user-events">
         <!-- <button class="teal-text #053b31 teal darken-4 teal lighten-5"
         style="font-family:'Oswald', sans-serif; font-size: 18px; width: 11%; height: 28px; position: relative; top:12px" id="show-users">Show All
@@ -80,12 +90,12 @@
       </div>
     </div>
 
-    <div class="divider"></div>
+    <div class="divider" style="margin-top: 40px"></div>
     <div class="section" id="users">
        <!-- <a href="#!" class="btn waves-effect waves-teal">Send</a> -->
       <h3 href="#!" class="text waves-effect waves-teal" style="font-family: 'Fredericka the Great', cursive;">All Activists</h3>
       <button class="teal-text #053b31 teal darken-4 teal lighten-5"
-      style="font-family:'Oswald', sans-serif; font-size: 18px; width: 11%; height: 28px; position: relative; top:12px" id="show-users">Show All
+      style="font-family:'Oswald', sans-serif; font-size: 20px; width: 11%; height: 28px; position: relative; top:12px; left:30px;" id="show-users">Show
     </button>
     <!-- </h3> -->
       <ul style="font-family:'Cinzel Decorative', cursive;" id='users-list'>
@@ -97,7 +107,7 @@
 
     <div class="divider"></div>
      <div class="row">
-       <h3 href="#!" class="text waves-effect waves-teal" style="font-family: 'Fredericka the Great', cursive;">All Events</h3>
+       <h3 href="#!" class="text waves-effect waves-teal" style="font-family: 'Fredericka the Great', cursive; margin-top:40px;">All Events</h3>
       <div class="section" id="events">
         <!-- <h3 href="#!" class="text waves-effect waves-teal" style="font-family: 'Fredericka the Great', cursive;">All Events</h3> -->
         <!-- <div class="row">
@@ -128,7 +138,7 @@
       </div> -->
       <!-- <div id="event-show-panel"></div> -->
 
-    <div class="divider"></div>
+    <div class="divider" style="margin-top: 40px"></div>
     <h3 href="#!" class="text waves-effect waves-teal" style="font-family: 'Fredericka the Great', cursive">Map</h3><br>
     <!-- <div id="map"></div> -->
     <div class="section" id="map">
