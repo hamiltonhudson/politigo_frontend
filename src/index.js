@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showCurrentUserEvents(user)
         showEventDetails(user)
         showAllUsers()
-        // userFormContainer.innerHTML = ''
+        userFormContainer.innerHTML = ''
       })
     })
   }
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showCurrentUserEvents(user)
         showEventDetails(user)
         showAllUsers()
-        // userFormContainer.innerHTML = ''
+        userFormContainer.innerHTML = ''
       })
     })
   }
