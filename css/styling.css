@@ -57,3 +57,12 @@ animation-duration: 3s;
   height: 400px;
   background-color: grey;
 }
+
+#footer {
+  margin:auto;
+  display:table;
+  border:1px;
+  font-family: 'Major Mono Display', monospace;
+  font-size:10px;
+  padding-bottom: 5px;
+}
