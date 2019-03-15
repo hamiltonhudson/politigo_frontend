@@ -39,6 +39,19 @@ animation-duration: 3s;
 #subtitle:hover {
 }
 
+/* #user-form{
+  padding-right: 80px;
+  padding-left: 20px;
+} */
+
+/* #new-user-form {
+  text-align: right;
+}
+
+#returning-user-form {
+  text-align: right;
+} */
+
 #map {
   width: 100%;
   height: 400px;
