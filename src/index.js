@@ -183,18 +183,6 @@ document.addEventListener('DOMContentLoaded', function() {
         <button class="detail" type="button" id="add" data-id="${eventShown.id}">Attend This Event</button>
         `
         showEventLocation(eventShown)
-        // var myLatLng = {lat: parseFloat(eventShown.lat), lng: parseFloat(eventShown.long)};
-        // let title = `${eventShown.style} for ${eventShown.cause}`
-        // var map = new google.maps.Map(document.getElementById('map'), {
-        //   zoom: 10,
-        //   center: myLatLng
-        // });
-        // let marker = new google.maps.Marker({
-        //   position: myLatLng,
-        //   map: map,
-        //   title: title
-        // });
-        // marker = ''
         let newAttendee = userInfo
         const addEventBtn = document.querySelector("#add")
         addEventBtn.addEventListener('click', (event) => {
