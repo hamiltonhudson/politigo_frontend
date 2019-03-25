@@ -104,8 +104,8 @@ document.addEventListener('DOMContentLoaded', function() {
             <span class="detail" id=data-name="location">${userEventShown.location}</span><br>
             <span class="detail" id=data-name="date">${userEventShown.date}</span><br>
             <span class="detail" id=data-name="time">${userEventShown.time}</span><br></br>
-            <button class="detail" type="button" id="button${userEventShown.id}" data-id="${userEventShown.id}">Show Attending Activists</button>
-            <button class="detail" type="button" id="remove" data-id="{userEventShown.id}">Remove This Event</button>
+            <button class="detail" type="button" id="button${userEventShown.id}" data-id="${userEventShown.id}" style="font-family: Richie Brusher; font-size: 18px; padding-top: 5px;">Show Attending Activists</button>
+            <button class="detail" type="button" id="remove" data-id="{userEventShown.id}" style="font-family: Richie Brusher; font-size: 18px; padding-top: 5px;">Remove This Event</button>
             `
           let showEventActivistsBtn = document.getElementById(`button${eventShownInfo.dataset.id}`)
           showEventActivistsBtn.addEventListener('click', (event ) => {
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <span class="detail" id=data-name="location">${eventShown.location}</span><br>
         <span class="detail" id=data-name="date">${eventShown.date}</span><br>
         <span class="detail" id=data-name="time">${eventShown.time}</span><br></br>
-        <button class="detail" type="button" id="add" data-id="${eventShown.id}">Attend This Event</button>
+        <button class="detail" type="button" id="add" data-id="${eventShown.id}" style="font-family: Richie Brusher; font-size: 18px; padding-top: 5px;">Attend This Event</button>
         `
         showEventLocation(eventShown)
         let newAttendee = userInfo
