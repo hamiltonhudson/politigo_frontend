@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const showActivistBtn = document.querySelector('#show-users')
   const currentUserEvents = document.querySelector("#current-users-events")
   const currentUserEventsDetail = document.querySelector('#users-events-show-panel')
+  let eventAttendees = document.createElement('ul')
   const eventsList = document.querySelector('#events-list')
   let eventShowPanel = document.querySelector('#event-show-panel')
 
@@ -37,9 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
         let user = response
         li.innerHTML = `${user.name} | humanitarian goodwill score: 0`
         li.dataset.id = user.id
-        console.log("user in setUser", user)
-        console.log("li in setUser", li, li.dataset.id)
-        usersList.appendChild(li)
         fetchEvents()
         showCurrentUserEvents(user)
         showEventDetails(user)
@@ -62,9 +60,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // } else {
         let users = response
         let user = users.find(user => user.name.toLowerCase() === name.toLowerCase())
-        li.innerHTML = `${user.name} | humanitarian goodwill score: 0`
+        li.innerHTML = `${user.name} | humanitarian goodwill score: ${user.score}`
         li.dataset.id = user.id
-        usersList.appendChild(li)
         fetchEvents()
         showCurrentUserEvents(user)
         showEventDetails(user)
@@ -85,65 +82,121 @@ document.addEventListener('DOMContentLoaded', function() {
       let usersEvents = signedIn.events
       currentUserEvents.innerHTML = ''
       usersEvents.forEach(userEvent => {
-        let li = document.createElement('li')
-        li.textContent = `${userEvent.cause} | ${userEvent.style}`
-        li.dataset.id = userEvent.id
-        currentUserEvents.appendChild(li)
+        let userEventInfo = document.createElement('li')
+        userEventInfo.textContent = `≫ ${userEvent.cause} | ${userEvent.style}`
+        userEventInfo.dataset.id = userEvent.id
+        userEventInfo.id = `Event${userEvent.id}`
+        currentUserEvents.appendChild(userEventInfo)
+        showAttendees()
+        eventAttendees.id="eventAttendees"
+        eventAttendees.innerHTML = ''
       })
-      currentUserEvents.addEventListener('click', (event) => {
-        userEventClicked = parseInt(event.target.dataset.id)
-        userEventShown = usersEvents.find((userEvent) => userEvent.id === userEventClicked)
+
+      function showAttendees() {
+        currentUserEvents.addEventListener('click', (event) => {
+          eventAttendees.innerHTML = ''
+          let eventShownInfo = document.querySelector(`#Event${event.target.dataset.id}`)
+          userEventClicked = parseInt(event.target.dataset.id)
+          userEventShown = usersEvents.find((userEvent) => userEvent.id === userEventClicked)
+          console.log(userEventShown.style)
           currentUserEventsDetail.innerHTML = `
-          <span class="detail" id=data-name="style">*${userEventShown.style} for ${userEventShown.cause}</span><br></br>
-          <span class="detail" id=data-name="location">${userEventShown.location}</span><br>
-          <span class="detail" id=data-name="date">${userEventShown.date}</span><br>
-          <span class="detail" id=data-name="time">${userEventShown.time}</span><br></br>
-          <button class="detail" type="button" id="remove" data-id="{userEventShown.id}">Remove This Event</button>
-          `
+            <span class="detail" id=data-name="style">${userEventShown.style} for ${userEventShown.cause}</span><br></br>
+            <span class="detail" id=data-name="location">${userEventShown.location}</span><br>
+            <span class="detail" id=data-name="date">${userEventShown.date}</span><br>
+            <span class="detail" id=data-name="time">${userEventShown.time}</span><br></br>
+            <button class="detail" type="button" id="button${userEventShown.id}" data-id="${userEventShown.id}">Show Attending Activists</button>
+            <button class="detail" type="button" id="remove" data-id="{userEventShown.id}">Remove This Event</button>
+            `
+          let showEventActivistsBtn = document.getElementById(`button${eventShownInfo.dataset.id}`)
+          showEventActivistsBtn.addEventListener('click', (event ) => {
+            if (showEventActivistsBtn.textContent === "Show Attending Activists") {
+              showEventActivistsBtn.textContent = "Hide Attending Activists"
+              const eventActivists = userEventShown.users
+              eventShownInfo.appendChild(eventAttendees)
+              ul = document.createElement('ul')
+              eventActivists.forEach(activist => {
+                ul.innerHTML += `
+                                <li data-id='${activist.id}' style="padding-left: 15px; font-size: 12px" >· ${activist.name}</li>
+                                `
+                eventAttendees.appendChild(ul)
+              })
+            } else {
+              showEventActivistsBtn.textContent = "Show Attending Activists"
+              ul.innerHTML = ''
+            }
+          })
           showEventLocation(userEventShown)
-        const removeEventBtn = document.querySelector("#remove")
-        removeEventBtn.addEventListener('click', (event) => {
-          removeEventClicked = signedIn.user_events.find(ue => ue.event_id === eventShown.id)
-          fetch(`http://localhost:3000/api/v1/user_events/${removeEventClicked.id}`, {
-            method: 'DELETE',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-              id: `${removeEventClicked.id}`
+          const removeEventBtn = document.querySelector("#remove")
+          removeEventBtn.addEventListener('click', (event) => {
+            removeEventClicked = signedIn.user_events.find(ue => ue.event_id === userEventShown.id)
+            fetch(`http://localhost:3000/api/v1/user_events/${removeEventClicked.id}`, {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              },
+              body: JSON.stringify({
+                id: `${removeEventClicked.id}`
+              })
+            })
+            .then(response => response.json())
+            .then(data => {
+              updatedUser = data
+              currentUserScore.textContent = `humanitarian goodwill score: ${updatedUser.score}`
+              currentUserEvents.innerHTML = ''
+              showCurrentUserEvents(updatedUser)
+              window.alert('You are no longer signed up')
+              currentUserEventsDetail.innerHTML = '← Click Event for Details'
+              usersList.innerHTML = ''
+              showActivistBtn.textContent = 'Show'
+              eventsList.innerHTML = ''
+              fetchEvents()
             })
           })
-          .then(response => response.json())
-          .then(data => {
-            updatedUser = data
-            currentUserScore.textContent = `humanitarian goodwill score: ${updatedUser.score}`
-            currentUserEvents.innerHTML = ''
-            showCurrentUserEvents(updatedUser)
-            window.alert('You are no longer signed up')
-            currentUserEventsDetail.innerHTML = '← Click Event for Details'
-            usersList.innerHTML = ''
-            showActivistBtn.textContent = 'Show'
-            // showAllUsers()
-          })
         })
-      })
+      }
     })
   }
 
   function showAllUsers() {
     showActivistBtn.addEventListener('click', (event) => {
-      // usersList.innerHTML = ''
       if (showActivistBtn.textContent === 'Show') {
         showActivistBtn.textContent = 'Hide'
         fetch('http://localhost:3000/api/v1/users/')
         .then(response => response.json())
         .then(data => {
-          let users = data
-          users.forEach(user => {
-            usersList.innerHTML += `
-                                  <li data-id='${user.id}'>${user.name} | humanitarian goodwill score: ${user.score}</li>
-                                  `
+          let activists = data
+          activists.forEach(activist => {
+            activistEvents = activist.events
+            let activistInfo = document.createElement('ul')
+            activistInfo.textContent = `${activist.name} | humanitarian goodwill score: ${activist.score} || `
+            activistInfo.dataset.id = activist.id
+            activistInfo.id = `${activist.name}`
+            let showBtn = document.createElement('button')
+            showBtn.dataset.id = activist.id
+            showBtn.textContent = "Show Events"
+            showBtn.id="activist-show"
+            showBtn.className="teal-text #053b31 teal darken-4 teal lighten-5"
+            showBtn.style="font-family:'Oswald', sans-serif; font-size: 11px; width: 11%; height: 18px;"
+             // position: relative; top:12px; left:30px;
+            activistInfo.appendChild(showBtn)
+            let activistShownEvents = document.createElement('ul')
+            activistInfo.appendChild(activistShownEvents)
+            showBtn.addEventListener('click', (event ) => {
+              if (showBtn.textContent === "Show Events") {
+                showBtn.textContent = "Hide Events"
+                const activistEvents = activist.events
+                activistEvents.forEach(event => {
+                  activistShownEvents.innerHTML += `
+                                <li data-id='${event.id}' style="padding-left: 15px; font-size: 13px" >∙ ${event.style} for ${event.cause}</li>
+                                `
+                })
+              } else {
+                showBtn.textContent = "Show Events"
+                activistShownEvents.innerHTML = ''
+              }
+            })
+            usersList.appendChild(activistInfo)
           })
         })
       } else {
@@ -153,16 +206,23 @@ document.addEventListener('DOMContentLoaded', function() {
     })
   }
 
+
   function fetchEvents() {
     fetch('http://localhost:3000/api/v1/events/')
     .then(response => response.json())
     .then(data => {
       events = data
       events.forEach(event => {
-        let li = document.createElement('li')
-        li.textContent = `${event.cause} | ${event.style}`
-        li.dataset.id = event.id
-        eventsList.appendChild(li)
+        let ul = document.createElement('ul')
+        ul.textContent = `≫ ${event.cause} | ${event.style} `
+        ul.dataset.id = event.id
+        ul.style="font-size: 16px"
+        attendeeCount = event.users.length
+        let span = document.createElement('span')
+        span.textContent = `[Attendees: ${attendeeCount}]`
+        span.style="font-size: 12px;"
+        ul.appendChild(span)
+        eventsList.appendChild(ul)
       })
     })
   }
@@ -211,6 +271,8 @@ document.addEventListener('DOMContentLoaded', function() {
             eventShowPanel.innerHTML = '← Click Event for Details'
             usersList.innerHTML = ''
             showActivistBtn.textContent = 'Show'
+            eventsList.innerHTML = ''
+            fetchEvents()
           }
         })
       })
@@ -218,9 +280,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function showEventLocation(event) {
-    console.log("event in showEventLocation", event)
     let eventDisplay = event
-    console.log("eventDisplay in showEventLocation", eventDisplay)
     var myLatLng = {lat: parseFloat(eventDisplay.lat), lng: parseFloat(eventDisplay.long)};
     let title = `${eventDisplay.style} for ${eventDisplay.cause}`
     var map = new google.maps.Map(document.getElementById('map'), {

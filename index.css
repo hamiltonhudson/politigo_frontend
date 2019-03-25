@@ -5,3 +5,15 @@ body {
 		color:orange;
 	}
 }
+
+.activist-show {
+	/* class: "teal-text #053b31 teal darken-4 teal lighten-5" */
+	font-family:'Oswald', sans-serif;
+	font-size: 20px;
+	width: 11%;
+	height: 28px;
+	position:
+	elative;
+	top:12px;
+	left:30px;"
+}
