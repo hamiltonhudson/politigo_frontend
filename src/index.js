@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchEvents()
         showCurrentUserEvents(user)
         showEventDetails(user)
+        usersList.innerHTML = ''
+        showActivistBtn.textContent = 'Show'
         showAllUsers()
         userFormContainer.innerHTML = ''
       })
@@ -65,6 +67,8 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchEvents()
         showCurrentUserEvents(user)
         showEventDetails(user)
+        usersList.innerHTML = ''
+        showActivistBtn.textContent = 'Show'
         showAllUsers()
         userFormContainer.innerHTML = ''
       })
