@@ -11,11 +11,11 @@ JavaScript, Ruby on Rails, Google Places API, HTML, CSS, JSON, Materialize CDN &
 ## Getting Started
 
 ### Prerequisites
-To use, clone down this repo and open with your preferred text editor. Before anything else, if you haven’t already, make sure to set up the project backend as well (link below), which will ensure you have rails 2.5.3 or higher installed on your machine. This is a vanilla JavaScript project using node package manager, so once you have it open in your local environment, run the following: 
+To use, clone down this repo and open with your preferred text editor. Before anything else, if you haven’t already, make sure to set up the project backend as well (link below), which will ensure you have rails 2.5.3 or higher installed on your machine. This is a vanilla JavaScript project using node package manager, so once you have it open in your local environment, run the following:
 
 `npm install`
 
-terminal command from the root of the project to install dependencies. 
+terminal command from the root of the project to install dependencies.
 
 ### Installing
 Once npm is finished installing and you’re back to a working terminal, jump over to the backend project root and run:
@@ -34,7 +34,7 @@ which will launch PolitiGo in your browser. You can sign up as a new user with f
 
 ## Demo Video
 
-[PolitiGo.mov](https://drive.google.com/file/d/1eXNeKp4y4GuBRNGw6EdKM_0191XIzOVq/view)
+[PolitiGo.mov](https://drive.google.com/file/d/1UgnaBviEsv_wpKswC5KCTg3gODIdR2mI/view)
 
 ## Authors
 
