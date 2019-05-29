@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
       currentUserEvents.innerHTML = ''
       usersEvents.forEach(userEvent => {
         let userEventInfo = document.createElement('li')
-        userEventInfo.textContent = `≫ ${userEvent.cause} | ${userEvent.style}`
+        userEventInfo.innerHTML = `<span style="font-size: 20px"> ≫ </span> ${userEvent.cause} | ${userEvent.style}`
         userEventInfo.dataset.id = userEvent.id
         userEventInfo.id = `Event${userEvent.id}`
         currentUserEvents.appendChild(userEventInfo)
@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
       events = data
       events.forEach(event => {
         let ul = document.createElement('ul')
-        ul.textContent = `≫ ${event.cause} | ${event.style} `
+        ul.innerHTML = `<span style="font-size: 22px"> ≫ </span> ${event.cause} | ${event.style} `
         ul.dataset.id = event.id
         ul.style="font-size: 16px"
         attendeeCount = event.users.length
