@@ -4,15 +4,9 @@
     <meta charset="utf-8">
     <title>Politigo</title>
     <script src="src/index.js" charset="utf-8"></script>
-    <!-- <script src="src/map.js" charset="utf-8"></script> -->
-    <!-- <script type="text/javascript" src="src/index.js" charset="utf-8"></script> -->
-    <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Codystar" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Frijole" rel="stylesheet">
-    <!-- <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative" rel="stylesheet"> -->
-      <link href="https://fonts.googleapis.com/css?family=Cinzel|Cinzel+Decorativ|Cinzel+Decorative|Codystar|Fredericka+the+Great|Frijole|Major+Mono+Display" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Cinzel|Cinzel+Decorative|Codystar|Fredericka+the+Great|Frijole|Major+Mono+Display|Oswald:300,400,500,600" rel="stylesheet">
+    
     <link href="css/styling.css" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -40,21 +34,19 @@
     <div class="divider" style="margin-bottom:-15px"></div><br/>
     <div class="section" id="enter-user">
       <div class="row" style="padding-left: 2em;">
-        <div class="col s12" id="user-form-container" style="margin-top: 5px; margin-bottom:5px">
+        <div class="col s12" id="user-form-container" style="margin-top: 20px;">
           <div class="row">
-            <form class="form-group col m6 l6" id="new-user-form" style="padding-right: 80px; padding-left: 20px">
-            <h6  style="padding-bottom: 10px; margin-left: 10px;">Sign Up</h6>
-              <label style="font-size: 16px; width: 12%; height: 30px;
-              font-family:'Oswald', sans-serif; margin-left: 15px;" for="first_name">Name</label>
-              <input style="font-size:15px; margin-left: 15px;" id="new-user-input" type="text" placeholder="first and last" class="validate"/>
-              <input style="font-size: 12px; margin-top:10px; margin-left: 15px;" type="submit" value="Submit"/>
+            <form class="form-group col l6 m6 s8" id="new-user-form" style="padding-right: 80px; padding-bottom: 8%;">
+            <h6 style="padding-bottom: 15px; margin-left: 10px; font-size: 20px; font-family:'Oswald', sans-serif; color: #004D40; letter-spacing: .75px; text-align: center">Sign Up</h6>
+              <label style="font-size: 14px; color: #000000; height: 30px; margin-left: 15px;" for="first_name">Name</label>
+              <input style="font-size: 15px; margin-left: 15px;" id="new-user-input" type="text" placeholder="first and last" class="validate"/>
+              <input style="font-size: 12px; font-family: 'Oswald'; margin-top:15px; margin-left: 15px; float: right;" type="submit" value="Submit"/>
             </form>
-            <form class="form-group col m6 l6" id="return-user-form" style="padding-right: 80px;">
-              <h6  style="padding-bottom: 10px; margin-left:10px;">Sign In</h6>
-              <label style="font-size: 16px; width: 12%; height: 30px;
-              font-family:'Oswald', sans-serif; margin-left: 15px;" for="first_name">Name</label>
-              <input style="font-size:15px; margin-left: 15px;" id="return-user-input" type="text" placeholder="first and last" class="validate"/>
-              <input style="font-size: 12px; margin-top:10px; margin-left: 15px;" type="submit" value="Submit"/>
+            <form class="form-group col l6 m6 s8" id="return-user-form" style="padding-right: 80px;">
+              <h6 style="padding-bottom: 15px; margin-left:10px; font-size: 20px; font-family:'Oswald', sans-serif; color: #004D40; letter-spacing: .75px; text-align: center">Sign In</h6>
+              <label style="font-size: 14px; color: #000000; height: 30px; margin-left: 15px;" for="first_name">Name</label>
+              <input style="font-size:15px; margin-left: 15px" id="return-user-input" type="text" placeholder="first and last" class="validate"/>
+              <input style="font-size: 12px; font-family: 'Oswald'; margin-top:15px; margin-left: 15px; float: right" type="submit" value="Submit"/>
             </form>
           </div>
         </div>
@@ -65,7 +57,7 @@
     <div class="section"></div>
       <span id="current-user">
       <h3 id="activist" href="#!" class="text waves-effect waves-teal" style="font-family: 'Fredericka the Great', cursive;">Activist: </h3>
-      <h6 style="font-family:'Cinzel Decorative', cursive; margin-bottom: 20px;" id="current-user-score">Humanitarian Goodwill Score:</h6>
+      <h6 style="font-family:'Major Mono Display', cursive; margin-bottom: 20px;" id="current-user-score">Humanitarian Goodwill Score:</h6>
       </span>
       <br/>
       <div class="divider"></div>
@@ -73,7 +65,7 @@
         <h3 href="#!" class="text waves-effect waves-teal" style="font-family: 'Fredericka the Great', cursive; margin-top:40px;">Your Events</h3>
         <div class="section" id="user-events">
       <div class="col s6">
-      <ul class="indigo-text text-darken-3" style="font-family:'Major Mono Display', monospace;" id="current-users-events">
+      <ul class="indigo-text text-darken-3" style="font-family:'Cinzel Decorative', monospace;" id="current-users-events">
       </ul>
     </div>
         <div class="col s6">
@@ -90,9 +82,9 @@
     <div class="section" id="users">
       <h3 href="#!" class="text waves-effect waves-teal" style="font-family: 'Fredericka the Great', cursive;">All Activists</h3>
       <button class="teal-text #053b31 teal darken-4 teal lighten-5"
-      style="font-family:'Oswald', sans-serif; font-size: 20px; width: 11%; height: 28px; position: relative; top:12px; left:30px;" id="show-users">Show
+      style="font-family:'Oswald', sans-serif; font-size: 20px; border-radius: 8px; width: 75px; height: 28px; position: relative; display: inline-block; top:12px; left:30px;" id="show-users">Show
     </button>
-      <ul style="font-family:'Cinzel Decorative', cursive; font-size:17px" id='users-list'></ul>
+      <ul style="font-family:'Major Mono Display', cursive; font-size:14px" id='users-list'></ul>
       <div id='update_user'></div>
     </div>
 
@@ -102,13 +94,13 @@
        <h3 href="#!" class="text waves-effect waves-teal" style="font-family: 'Fredericka the Great', cursive; margin-top:40px;">All Events</h3>
       <div class="section" id="events">
         <div class="col s6">
-        <ul class="indigo-text text-darken-3" style="font-family:'Major Mono Display', monospace;" id="events-list">
+        <ul class="indigo-text text-darken-3" style="font-family:'Cinzel Decorative', monospace;" id="events-list">
         </ul>
       </div>
           <div class="col s6">
             <div class="card green lighten-1">
               <div class="card-content white-text">
-                <div style="font-family: 'Codystar', cursive; font-size: 18px; font-weight:bold" id="event-show-panel"> ← Click Event for Details </div>
+                <div style="font-family: 'Codystar', cursive; font-size: 18px; font-weight:bold;" id="event-show-panel"> ← Click Event for Details </div>
               </div>
             </div>
           </div>
@@ -116,18 +108,19 @@
       </div>
 
     <div class="divider" style="margin-top: 40px"></div>
-    <h3 href="#!" class="text waves-effect waves-teal" style="font-family: 'Fredericka the Great', cursive; padding-top: 5px; padding-bottom: 15px;">Map</h3><br>
-    <!-- <div id="map"></div> -->
-    <div class="section" id="map" style="padding-bottom: 25px;">
-    <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
+    <div id="map-div">
+      <h3 href="#!" class="text waves-effect waves-teal" style="font-family: 'Fredericka the Great', cursive; padding-top: 5px; padding-bottom: 15px;">Map</h3><br>
+      <div class="section" id="map" style="padding-bottom: 25px;">
+        <script>
+        var map;
+        function initMap() {
+          map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 40.712776, lng: -74.005974},
           zoom: 9
-        });
-      }
-    </script>
+          });
+        }
+        </script>
+      </div>
     </div>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1jXiGsryqWY2RO9RWTKTneSTlTqOSYL8&callback=initMap">
     </script>

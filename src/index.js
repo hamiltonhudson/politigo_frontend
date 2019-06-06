@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // alert('LOADED');
 
   const userFormContainer = document.querySelector('#enter-user')
   const newUserForm = document.querySelector('#new-user-form')
@@ -16,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let eventAttendees = document.createElement('ul')
   const eventsList = document.querySelector('#events-list')
   let eventShowPanel = document.querySelector('#event-show-panel')
+
 
   function setUser() {
     newUserForm.addEventListener('submit', (event) => {
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
       currentUserEvents.innerHTML = ''
       usersEvents.forEach(userEvent => {
         let userEventInfo = document.createElement('li')
-        userEventInfo.innerHTML = `<span style="font-size: 20px"> ≫ </span> ${userEvent.cause} | ${userEvent.style}`
+        userEventInfo.innerHTML = `<span style="font-size: 20px"> ≫ </span> ${userEvent.cause} <span style="font-size: 24px; font-weight: bolder">  | </span>  ${userEvent.style}`
         userEventInfo.dataset.id = userEvent.id
         userEventInfo.id = `Event${userEvent.id}`
         currentUserEvents.appendChild(userEventInfo)
@@ -108,8 +108,8 @@ document.addEventListener('DOMContentLoaded', function() {
             <span class="detail" id=data-name="location">${userEventShown.location}</span><br>
             <span class="detail" id=data-name="date">${userEventShown.date}</span><br>
             <span class="detail" id=data-name="time">${userEventShown.time}</span><br></br>
-            <button class="detail" type="button" id="button${userEventShown.id}" data-id="${userEventShown.id}" style="font-family: Richie Brusher; font-size: 18px; padding-top: 5px;">Show Attending Activists</button>
-            <button class="detail" type="button" id="remove" data-id="{userEventShown.id}" style="font-family: Richie Brusher; font-size: 18px; padding-top: 5px;">Remove This Event</button>
+            <button class="detail" type="button" id="button${userEventShown.id}" data-id="${userEventShown.id}" style="font-family: Codystar; font-weight: bolder; font-style: oblique; font-size: 18px; padding-top: 5px;">Show Attending Activists</button>
+            <button class="detail" type="button" id="remove" data-id="${userEventShown.id}" style="font-family: Codystar; font-weight: bolder; font-size: 18px; font-style: oblique; padding-top: 5px;">Remove This Event</button>
             `
           let showEventActivistsBtn = document.getElementById(`button${eventShownInfo.dataset.id}`)
           showEventActivistsBtn.addEventListener('click', (event ) => {
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
               ul = document.createElement('ul')
               eventActivists.forEach(activist => {
                 ul.innerHTML += `
-                                <li data-id='${activist.id}' style="padding-left: 15px; font-size: 12px" >· ${activist.name}</li>
+                                <li data-id='${activist.id}' style="padding-left: 15px; font-family: Major Mono Display; font-size: 12px; color: #000000" >· ${activist.name}</li>
                                 `
                 eventAttendees.appendChild(ul)
               })
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
           activists.forEach(activist => {
             activistEvents = activist.events
             let activistInfo = document.createElement('ul')
-            activistInfo.textContent = `${activist.name} | humanitarian goodwill score: ${activist.score} || `
+            activistInfo.innerHTML = `${activist.name} <span style="font-size: 13px"> ⎮⎮ </span> humanitarian goodwill score: ${activist.score}  `
             activistInfo.dataset.id = activist.id
             activistInfo.id = `${activist.name}`
             let showBtn = document.createElement('button')
@@ -181,8 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showBtn.textContent = "Show Events"
             showBtn.id="activist-show"
             showBtn.className="teal-text #053b31 teal darken-4 teal lighten-5"
-            showBtn.style="font-family:'Oswald', sans-serif; font-size: 11px; width: 11%; height: 18px;"
-             // position: relative; top:12px; left:30px;
+            showBtn.style="font-family:'Oswald', sans-serif; font-size: 11px; border-radius: 5px; width: auto; height: 18px; margin: 5px; position: relative"
             activistInfo.appendChild(showBtn)
             let activistShownEvents = document.createElement('ul')
             activistInfo.appendChild(activistShownEvents)
@@ -192,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const activistEvents = activist.events
                 activistEvents.forEach(event => {
                   activistShownEvents.innerHTML += `
-                                <li data-id='${event.id}' style="padding-left: 15px; font-size: 13px" >∙ ${event.style} for ${event.cause}</li>
+                                <li data-id='${event.id}' style="padding-left: 15px; font-size: 13px; font-family: Cinzel Decorative, monospace; color: #283593" >∙ ${event.style} for ${event.cause}</li>
                                 `
                 })
               } else {
@@ -218,13 +217,13 @@ document.addEventListener('DOMContentLoaded', function() {
       events = data
       events.forEach(event => {
         let ul = document.createElement('ul')
-        ul.innerHTML = `<span style="font-size: 22px"> ≫ </span> ${event.cause} | ${event.style} `
+        ul.innerHTML = `<span style="font-size: 22px"> ≫ </span> ${event.cause}  <span style="font-size: 26px; font-weight: bolder">  | </span> ${event.style} `
         ul.dataset.id = event.id
         ul.style="font-size: 16px"
         attendeeCount = event.users.length
         let span = document.createElement('span')
-        span.textContent = `[Attendees: ${attendeeCount}]`
-        span.style="font-size: 12px;"
+        span.textContent = ` [Attendees: ${attendeeCount}]`
+        span.style="font-size: 12px; display: inline-flex;"
         ul.appendChild(span)
         eventsList.appendChild(ul)
       })
@@ -244,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <span class="detail" id=data-name="location">${eventShown.location}</span><br>
         <span class="detail" id=data-name="date">${eventShown.date}</span><br>
         <span class="detail" id=data-name="time">${eventShown.time}</span><br></br>
-        <button class="detail" type="button" id="add" data-id="${eventShown.id}" style="font-family: Richie Brusher; font-size: 18px; padding-top: 5px;">Attend This Event</button>
+        <button class="detail" type="button" id="add" data-id="${eventShown.id}" style="font-family: Codystar; font-weight: bolder; font-style: oblique; font-size: 18px; padding-top: 5px;">Attend This Event</button>
         `
         showEventLocation(eventShown)
         let newAttendee = userInfo
