@@ -4,7 +4,8 @@ body {
 h1#politigo {
   text-align: center;
   font-family: 'Frijole', cursive;
-  font-size: 7em;
+  /* font-size: 7em; */
+  font-size: 8vw;
   padding-top: 10px;
 }
 span.detail {
@@ -35,19 +36,96 @@ animation-duration: 3s;
 #subtitle:hover {
 }
 
+#user-form-container {
+  margin-top: 20px;
+}
+
+.user-option {
+  margin-left:10px;
+  font-size: 20px;
+  font-family:'Oswald', sans-serif; color: #004D40;
+  letter-spacing: .75px; text-align: center;"
+}
+
+.form-label {
+  font-size: 14px;
+  color: #000000;
+  height: 30px;
+}
+
 #map {
   width: 100%;
   height: 400px;
   background-color: grey;
 }
 
-/* #map-div {
-  position: fixed;
+.submit-button {
+  font-size: 12px;
+  font-family: 'Oswald';
+  margin-top: 15px;
+  float: right;
+}
+
+h3 {
+  font-family: 'Fredericka the Great', cursive;"
+}
+
+#current-user-score {
+  font-family:'Major Mono Display', cursive;
+  margin-bottom: 20px;"
+}
+
+#current-users-events {
+  font-family:'Cinzel Decorative', monospace;
+}
+
+.event-details {
+  font-family: 'Codystar', cursive;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#show-users {
+  font-family:'Oswald', sans-serif;
+  font-size: 20px;
+  border-radius: 8px;
+  width: 75px;
+  height: 28px;
+  position: relative;
+  display: inline-block;
+  top: 12px;
+  left: 30px;
+}
+
+#users-list {
+  font-family: 'Major Mono Display', cursive;
+  font-size: 14px
+}
+
+#events-list {
+  font-family: 'Cinzel Decorative', monospace;
+}
+
+.events {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card.green {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0
+}
+
+
+#map {
+  padding-bottom: 25px;
+  /* position: fixed;
   top: 2%;
   right: 2%;
   width: 50%;
-  height: 200px;
-} */
+  height: 200px; */
+}
 
 #footer {
   margin:auto;

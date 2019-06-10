@@ -4,74 +4,76 @@
     <meta charset="utf-8">
     <title>Politigo</title>
     <script src="src/index.js" charset="utf-8"></script>
-
     <link href="https://fonts.googleapis.com/css?family=Cinzel|Cinzel+Decorative|Codystar|Fredericka+the+Great|Frijole|Major+Mono+Display|Oswald:300,400,500,600" rel="stylesheet">
-    
     <link href="css/styling.css" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
-
   </head>
-
   <body>
-    <div class="container"><br/>
-    </br/>
-    <h1 id="politigo" class="pulse">Politigo</h1>
-    <br/>
-
+    <div class="container"><br/></br/>
+      <h1 id="politigo" class="pulse">Politigo</h1><br/>
       <div class="divider"></div><br/>
       <div id="subtitle">
-      <span class="text waves-effect waves-teal">Be active. Get involved. Effect change.<span/>
-      <p style="margin-top: 10px;">✊✊🏻✊🏼✊🏽✊🏾✊🏿</p>
-    </div><br/>
+        <span class="text waves-effect waves-teal">Be active. Get involved. Effect change.</span>
+        <p style="margin-top: 10px;">✊✊🏻✊🏼✊🏽✊🏾✊🏿</p>
+      </div><br/>
     </div>
 
     <div class="container">
+
     <div class="divider" style="margin-bottom:-15px"></div><br/>
     <div class="section" id="enter-user">
-      <div class="row" style="padding-left: 2em;">
-        <div class="col s12" id="user-form-container" style="margin-top: 20px;">
-          <div class="row">
-            <form class="form-group col l6 m6 s8" id="new-user-form" style="padding-right: 80px; padding-bottom: 8%;">
-            <h6 style="padding-bottom: 15px; margin-left: 10px; font-size: 20px; font-family:'Oswald', sans-serif; color: #004D40; letter-spacing: .75px; text-align: center">Sign Up</h6>
-              <label style="font-size: 14px; color: #000000; height: 30px; margin-left: 15px;" for="first_name">Name</label>
-              <input style="font-size: 15px; margin-left: 15px;" id="new-user-input" type="text" placeholder="first and last" class="validate"/>
-              <input style="font-size: 12px; font-family: 'Oswald'; margin-top:15px; margin-left: 15px; float: right;" type="submit" value="Submit"/>
-            </form>
-            <form class="form-group col l6 m6 s8" id="return-user-form" style="padding-right: 80px;">
-              <h6 style="padding-bottom: 15px; margin-left:10px; font-size: 20px; font-family:'Oswald', sans-serif; color: #004D40; letter-spacing: .75px; text-align: center">Sign In</h6>
-              <label style="font-size: 14px; color: #000000; height: 30px; margin-left: 15px;" for="first_name">Name</label>
-              <input style="font-size:15px; margin-left: 15px" id="return-user-input" type="text" placeholder="first and last" class="validate"/>
-              <input style="font-size: 12px; font-family: 'Oswald'; margin-top:15px; margin-left: 15px; float: right" type="submit" value="Submit"/>
-            </form>
-          </div>
+      <div class="row" id="user-form-container">
+        <div class="col s6">
+          <h6 class="user-option" id="signup">Sign Up</h6>
+        </div>
+        <div class="col s6">
+          <h6 class="user-option" id="signin">Sign In</h6>
+        </div>
+      </div>
+      <div class="row" style="vertical-align: middle">
+        <div class="col s12 center-align">
+          <form class="form-group col l6 m6 s8 offset-l3 offset-m3 offset-s2" id="new-user-form" style="display: none;">
+            <label class="form-label" for="first_name">Name</label>
+            <input id="new-user-input" type="text" placeholder="first and last" class="validate" style="font-size:15px; margin-bottom: 34px;"/>
+            <label class="form-label" for="email_address">Email</label>
+            <input id="new-user-email" type="email" placeholder="email address" class="validate" style="font-size:15px; margin-bottom: 34px;"/>
+            <label class="form-label" for="password">Password</label>
+            <input id="new-user-password" type="password" placeholder="enter password" class="validate" style="font-size:15px;"/>
+            <input class="submit-button" type="submit" value="Submit"/>
+          </form>
+          <form class="form-group col l6 m6 s8 offset-l3 offset-m3 offset-s2" id="return-user-form" style="display: none;">
+            <label class="form-label" for="email_address">Email</label>
+            <input id="return-user-email" type="email" placeholder="email address" class="validate" style="font-size:15px; margin-bottom: 34px;"/>
+            <label class="form-label" for="password">Password</label>
+            <input id="return-user-password" type="password" placeholder="enter password" class="validate" style="font-size:15px;"/>
+            <input class="submit-button" type="submit" value="Submit"/>
+          </form>
         </div>
       </div>
     </div>
 
     <div class="divider" style="margin-top:-15px"></div>
     <div class="section"></div>
-      <span id="current-user">
-      <h3 id="activist" href="#!" class="text waves-effect waves-teal" style="font-family: 'Fredericka the Great', cursive;">Activist: </h3>
-      <h6 style="font-family:'Major Mono Display', cursive; margin-bottom: 20px;" id="current-user-score">Humanitarian Goodwill Score:</h6>
-      </span>
-      <br/>
-      <div class="divider"></div>
-      <div class="row" style="padding-bottom: 10px">
-        <h3 href="#!" class="text waves-effect waves-teal" style="font-family: 'Fredericka the Great', cursive; margin-top:40px;">Your Events</h3>
-        <div class="section" id="user-events">
-      <div class="col s6">
-      <ul class="indigo-text text-darken-3" style="font-family:'Cinzel Decorative', monospace;" id="current-users-events">
-      </ul>
-    </div>
+    <span id="current-user">
+      <h3 id="activist" href="#!" class="text waves-effect waves-teal"> Activist: </h3>
+      <h6 id="current-user-score">Humanitarian Goodwill Score:</h6>
+    </span><br/>
+
+    <div class="divider"></div>
+    <div class="row" style="padding-bottom: 10px">
+      <h3 href="#!" class="text waves-effect waves-teal" style="margin-top:40px;"> Your Events </h3>
+      <div class="section events" id="user-events">
+        <div class="col s6">
+          <ul class="indigo-text text-darken-3" id="current-users-events"></ul>
+        </div>
         <div class="col s6">
           <div class="card green lighten-1">
             <div class="card-content white-text">
-              <div style="font-family: 'Codystar', cursive; font-size: 18px; font-weight:bold" id="users-events-show-panel"> ← Click Event for Details </div>
+              <div class="event-details" id="users-events-show-panel"> ← Click Event for Details </div>
             </div>
           </div>
         </div>
@@ -80,37 +82,33 @@
 
     <div class="divider" style="margin-top: 40px"></div>
     <div class="section" id="users">
-      <h3 href="#!" class="text waves-effect waves-teal" style="font-family: 'Fredericka the Great', cursive;">All Activists</h3>
-      <button class="teal-text #053b31 teal darken-4 teal lighten-5"
-      style="font-family:'Oswald', sans-serif; font-size: 20px; border-radius: 8px; width: 75px; height: 28px; position: relative; display: inline-block; top:12px; left:30px;" id="show-users">Show
-    </button>
-      <ul style="font-family:'Major Mono Display', cursive; font-size:14px" id='users-list'></ul>
-      <div id='update_user'></div>
+      <h3 href="#!" class="text waves-effect waves-teal"> All Activists</h3>
+      <button class="teal-text #053b31 teal darken-4 teal lighten-5" id="show-users"> Show </button>
+      <ul id='users-list'></ul>
+      <div id='update-user'></div>
     </div>
 
-
     <div class="divider"></div>
-     <div class="row" style="padding-bottom: 10px">
-       <h3 href="#!" class="text waves-effect waves-teal" style="font-family: 'Fredericka the Great', cursive; margin-top:40px;">All Events</h3>
-      <div class="section" id="events">
+    <div class="row" style="padding-bottom: 10px">
+       <h3 href="#!" class="text waves-effect waves-teal" style="margin-top: 40px;"> All Events </h3>
+      <div class="section events" id="events">
         <div class="col s6">
-        <ul class="indigo-text text-darken-3" style="font-family:'Cinzel Decorative', monospace;" id="events-list">
-        </ul>
-      </div>
-          <div class="col s6">
-            <div class="card green lighten-1">
-              <div class="card-content white-text">
-                <div style="font-family: 'Codystar', cursive; font-size: 18px; font-weight:bold;" id="event-show-panel"> ← Click Event for Details </div>
-              </div>
+          <ul class="indigo-text text-darken-3" id="events-list"></ul>
+        </div>
+        <div class="col s6">
+          <div class="card green lighten-1">
+            <div class="card-content white-text">
+              <div class="event-details" id="event-show-panel"> ← Click Event for Details</div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
     <div class="divider" style="margin-top: 40px"></div>
     <div id="map-div">
-      <h3 href="#!" class="text waves-effect waves-teal" style="font-family: 'Fredericka the Great', cursive; padding-top: 5px; padding-bottom: 15px;">Map</h3><br>
-      <div class="section" id="map" style="padding-bottom: 25px;">
+      <h3 href="#!" class="text waves-effect waves-teal" style="padding-top: 5px; padding-bottom: 15px;"> Map </h3><br>
+      <div class="section" id="map">
         <script>
         var map;
         function initMap() {
@@ -124,7 +122,9 @@
     </div>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1jXiGsryqWY2RO9RWTKTneSTlTqOSYL8&callback=initMap">
     </script>
+
   </div><br/></br/><br/>
+
   <span id="footer">
     ¡Activate!
   </span>

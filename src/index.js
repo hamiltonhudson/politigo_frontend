@@ -1,10 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
 
   const userFormContainer = document.querySelector('#enter-user')
+  const signUp = document.querySelector('#signup')
   const newUserForm = document.querySelector('#new-user-form')
   const newUserInput = newUserForm.querySelector('#new-user-input')
+  const newUserEmail = newUserForm.querySelector('#new-user-email')
+  const newUserPassword = newUserForm.querySelector('#new-user-password')
+  const signIn = document.querySelector('#signin')
   const returnUserForm = document.querySelector('#return-user-form')
   const returnUserInput = returnUserForm.querySelector('#return-user-input')
+  const returnUserEmail = returnUserForm.querySelector('#return-user-email')
+  const returnUserPassword = returnUserForm.querySelector('#return-user-password')
   let userDisplay = document.querySelector('#user-display')
   let currentUser = document.querySelector('#activist')
   let currentUserScore = document.querySelector('#current-user-score')
@@ -16,11 +22,34 @@ document.addEventListener('DOMContentLoaded', function() {
   const eventsList = document.querySelector('#events-list')
   let eventShowPanel = document.querySelector('#event-show-panel')
 
+  function showSignUpForm() {
+    signUp.addEventListener('click', (event) => {
+      event.preventDefault()
+      returnUserForm.style.display = "none"
+      if (newUserForm.style.display === "none") {
+        newUserForm.style.display = "block"
+        setUser()
+      }
+    })
+  }
+
+  function showSignInForm() {
+    signIn.addEventListener('click', (event) => {
+      event.preventDefault()
+      newUserForm.style.display = "none"
+      if (returnUserForm.style.display === "none") {
+        returnUserForm.style.display = "block"
+        getUser()
+      }
+    })
+  }
 
   function setUser() {
     newUserForm.addEventListener('submit', (event) => {
       event.preventDefault()
       let name = newUserInput.value
+      let email = newUserEmail.value
+      let password = newUserPassword.value
       let li = document.createElement('li')
       fetch('http://localhost:3000/api/v1/users/', {
         method: 'POST',
@@ -29,7 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          name: `${name}`
+          name: `${name}`,
+          email: `${email}`,
+          password: `${password}`
         })
       })
       .then(r => r.json())
@@ -52,16 +83,16 @@ document.addEventListener('DOMContentLoaded', function() {
   function getUser() {
     returnUserForm.addEventListener('submit', (event) => {
       event.preventDefault()
-      let name = returnUserInput.value
+      // let name = returnUserInput.value
+      let email = returnUserEmail.value
+      let password = returnUserPassword.value
       let li = document.createElement('li')
       fetch('http://localhost:3000/api/v1/users/')
       .then(r => r.json())
       .then(response => {
-        // if (response.errors){
-        //   alert('Please enter full name')
-        // } else {
         let users = response
-        let user = users.find(user => user.name.toLowerCase() === name.toLowerCase())
+        // let user = users.find(user => user.name.toLowerCase() === name.toLowerCase())
+        let user = users.find(user => user.email === email && user.password === password )
         li.innerHTML = `${user.name} | humanitarian goodwill score: ${user.score}`
         li.dataset.id = user.id
         fetchEvents()
@@ -298,7 +329,7 @@ document.addEventListener('DOMContentLoaded', function() {
     marker = ''
   }
 
-  setUser()
-  getUser()
+  showSignUpForm()
+  showSignInForm()
 
 })
