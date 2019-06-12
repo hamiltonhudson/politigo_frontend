@@ -5,7 +5,7 @@
     <title>Politigo</title>
     <script src="src/index.js" charset="utf-8"></script>
     <link href="https://fonts.googleapis.com/css?family=Cinzel|Cinzel+Decorative|Codystar|Fredericka+the+Great|Frijole|Major+Mono+Display|Oswald:300,400,500,600" rel="stylesheet">
-    <link href="css/styling.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
@@ -64,9 +64,9 @@
     </span><br/>
 
     <div class="divider"></div>
-    <div class="row" style="padding-bottom: 10px">
+    <div class="row" style="margin-bottom: 0">
       <h3 href="#!" class="text waves-effect waves-teal" style="margin-top:40px;"> Your Events </h3>
-      <div class="section events" id="user-events">
+      <div class="section events" id="user-events" style="padding-bottom: 0">
         <div class="col s6">
           <ul class="indigo-text text-darken-3" id="current-users-events"></ul>
         </div>
@@ -89,10 +89,10 @@
     </div>
 
     <div class="divider"></div>
-    <div class="row" style="padding-bottom: 10px">
+    <div class="row" style="margin-bottom: 4vh">
        <h3 href="#!" class="text waves-effect waves-teal" style="margin-top: 40px;"> All Events </h3>
       <div class="section events" id="events">
-        <div class="col s6">
+        <div class="col s6" style="max-height: 150vh; overflow-y: scroll;">
           <ul class="indigo-text text-darken-3" id="events-list"></ul>
         </div>
         <div class="col s6">
@@ -105,7 +105,7 @@
       </div>
     </div>
 
-    <div class="divider" style="margin-top: 40px"></div>
+    <div class="divider" style="margin-top: 1vh"></div>
     <div id="map-div">
       <h3 href="#!" class="text waves-effect waves-teal" style="padding-top: 5px; padding-bottom: 15px;"> Map </h3><br>
       <div class="section" id="map">
