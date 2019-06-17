@@ -135,10 +135,10 @@ document.addEventListener('DOMContentLoaded', function() {
           userEventShown = usersEvents.find((userEvent) => userEvent.id === userEventClicked)
           console.log(userEventShown.style)
           currentUserEventsDetail.innerHTML = `
-            <span class="detail" id=data-name="style">${userEventShown.style} for ${userEventShown.cause}</span><br></br>
+            <span class="detail" id=data-name="style">*${userEventShown.style} for ${userEventShown.cause}</span><br></br>
             <span class="detail" id=data-name="location">${userEventShown.location}</span><br>
-            <span class="detail" id=data-name="date">${userEventShown.date}</span><br>
-            <span class="detail" id=data-name="time">${userEventShown.time}</span><br></br>
+            <span class="detail" id=data-name="date">${userEventShown.date} ┈ </span>
+            <span class="detail" id=data-name="time"> ${userEventShown.time}</span><br></br>
             <button class="detail" type="button" id="button${userEventShown.id}" data-id="${userEventShown.id}" style="font-family: Codystar; font-weight: bolder; font-style: oblique; font-size: 18px; padding-top: 5px;">Show Attending Activists</button>
             <button class="detail" type="button" id="remove" data-id="${userEventShown.id}" style="font-family: Codystar; font-weight: bolder; font-size: 18px; font-style: oblique; padding-top: 5px;">Remove This Event</button>
             `
@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
       eventShowPanel.innerHTML = `
         <span class="detail" id=data-name="style">*${eventShown.style} for ${eventShown.cause}</span><br></br>
         <span class="detail" id=data-name="location">${eventShown.location}</span><br>
-        <span class="detail" id=data-name="date">${eventShown.date}</span><br>
+        <span class="detail" id=data-name="date">${eventShown.date} ┈ </span>
         <span class="detail" id=data-name="time">${eventShown.time}</span><br></br>
         <button class="detail" type="button" id="add" data-id="${eventShown.id}" style="font-family: Codystar; font-weight: bolder; font-style: oblique; font-size: 18px; padding-top: 5px;">Attend This Event</button>
         `

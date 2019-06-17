@@ -4,9 +4,9 @@ body {
 h1#politigo {
   text-align: center;
   font-family: 'Frijole', cursive;
-  /* font-size: 7em; */
   font-size: 8vw;
-  padding-top: 10px;
+  /* font-size: 7em; */
+  /* padding-top: .5vh; */
 }
 span.detail {
   font-family: 'Codystar', cursive;
@@ -127,7 +127,6 @@ h3 {
   top: 0
 }
 
-
 #map {
   padding-bottom: 25px;
   /* position: fixed;
@@ -140,8 +139,7 @@ h3 {
 #footer {
   margin:auto;
   display:table;
-  border:1px;
   font-family: 'Major Mono Display', monospace;
   font-size:10px;
-  padding-bottom: 5px;
+  padding-bottom: 2vh;
 }
