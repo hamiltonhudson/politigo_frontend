@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-PolitiGo is a NYC Political event lister SPA, in an effort to activate users and connect them to one another based on shared political causes. Users can add to their attending list from all events listed, and can view relevant details including the mapped location pinpoint. As a fun incentive, a user has a “humanitarian goodwill score” that starts out at 0, and is increased by 10 every time they add an event and decreased by 10 every time they remove an event. To help foster a sense of community and keep attendance high, users can also view other users’ scores (and event list). ✊🏻
+PolitiGo is a New York City Political event-listing SPA, in an effort to activate users and connect them to one another based on shared political causes. Events are existing, local, ongoing or upcoming occurrences sourced via city data from the NYC Developer Portal. Users can view relevant details of all events shown, including the mapped location pinpoint, can add to their personal list by clicking "attend", and can view other users going to the same event(s). As a fun incentive, a user has a “humanitarian goodwill score” that starts out at 0, and is increased by 10 every time they add an event and decreased by 10 every time they remove an event. To help foster a sense of community and keep attendance high, users can also view other users’ scores and list of attending events. ✊🏻
 
 ## Technologies Used
 
