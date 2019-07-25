@@ -34,7 +34,7 @@ which will launch PolitiGo in your browser. You can sign up as a new user with f
 
 ## Demo Video
 
-[PolitiGo.mov](https://drive.google.com/file/d/1UgnaBviEsv_wpKswC5KCTg3gODIdR2mI/view)
+[PolitiGo.mov](https://drive.google.com/file/d/1eXNeKp4y4GuBRNGw6EdKM_0191XIzOVq/view?usp=sharing)
 
 ## Authors
 
